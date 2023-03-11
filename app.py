@@ -6,7 +6,16 @@ import os
 
 from PIL import Image
 
-#----------------------------------#
+#-----------------------------------------#
+
+st.markdown('''
+            <style> .font {
+            font-size: 45px;
+            font: "monospace";
+            color: #008000;
+            text-align: left;}
+            </style>
+            ''', unsafe_allow_html=True)
 
 st.sidebar.markdown('<p class="font">Excel to CSV File Converter</p>', unsafe_allow_html=True)
 
@@ -26,15 +35,6 @@ with st.sidebar.expander('**How it Works**', expanded=True):
             Please ensure that only .xlsx or .xls files are used, using any other file type
             will result in an error.
             ''')
-
-st.markdown('''
-            <style> .font {
-            font-size: 45px;
-            font: "monospace";
-            color: #008000;
-            text-align: left;}
-            </style>
-            ''', unsafe_allow_html=True)
 
 st.markdown('<p class="font">Upload Excel Files</p>', unsafe_allow_html=True)
 
