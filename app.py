@@ -39,7 +39,11 @@ with st.sidebar.expander('**How it Works**', expanded=True):
 
 st.markdown('<p class="font">Upload Excel Files</p>', unsafe_allow_html=True)
 
-file_upload = st.file_uploader('', type=['xlsx', 'xls'], accept_multiple_files=True)
+# The `label` argument cannot be an empty value. This is discouraged for accessibility reasons
+# and may be disallowed in the future by raising an exception. A string is provided but it is hidden
+# using `label_visibility` instead to prevent any future issues.
+file_upload = st.file_uploader('Upload File(s)', type=['xlsx', 'xls'], accept_multiple_files=True, 
+                               label_visibility='hidden')
 
 if file_upload is not None:
     for file in file_upload:
