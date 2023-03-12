@@ -58,8 +58,9 @@ if file_upload is not None:
             # number of rows and columns
             if df_excel.shape != df_csv.shape:
                 st.error(f'''
-                         The CSV file generated from {file_name} is not identical. 
-                         Inspect the Excel file for common issues and try again.
+                         The CSV file generated from {file_name} is not identical to the original file. 
+                         Inspect the Excel file for common issues (multiple sheets, formatted cells, etc)
+                         and try again.
                          ''')
             else:
                 st.download_button(
