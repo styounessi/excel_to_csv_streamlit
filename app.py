@@ -66,5 +66,5 @@ if file_upload is not None:
                 st.download_button(
                     label=f'Download \'{file_name_no_ext}\' as CSV',
                     data=csv,
-                    file_name=file_name.replace('.xlsx', '.csv'),
+                    file_name=os.path.splitext(file_name)[0] + '.csv',
                     mime='text/csv')
