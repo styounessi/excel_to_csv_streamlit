@@ -59,7 +59,7 @@ if file_upload is not None:
             if df_excel.shape != df_csv.shape:
                 st.error(f'''
                          The CSV file generated from {file_name} is not identical to the original file. 
-                         Inspect the Excel file for common issues (multiple sheets, formatted cells, etc)
+                         Inspect the Excel file for merged/formatted cells, formulas, special characters, etc
                          and try again.
                          ''')
             else:
