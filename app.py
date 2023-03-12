@@ -30,7 +30,7 @@ with st.sidebar.expander('**How it Works**', expanded=True):
             operations and files will benefit from the elimination of manual conversion.
             
             Please ensure that input files are single sheet Excel files, not multi-sheet, since
-            CSVs do not have multiple sheets.
+            CSVs do not support multiple sheets.
 
             Please ensure that only .xlsx or .xls files are used, using any other file type
             will result in an error.
