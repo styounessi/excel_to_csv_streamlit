@@ -45,7 +45,7 @@ if file_upload is not None:
         # Check if the uploaded file is an accepted excel file
         if file.type not in ['application/vnd.ms-excel',
                              'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']:
-            st.error(f'This file type is invalid: {file.name} an .xlsx or .xls file extension to proceed.')
+            st.error(f'This file type is invalid: {file.name} must be an .xlsx or .xls file to proceed.')
         else:
             # Split the file name from the file extension to make the download button distinctive
             file_name = file.name
