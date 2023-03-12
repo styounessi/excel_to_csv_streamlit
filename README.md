@@ -8,6 +8,6 @@ Please ensure that input files are single sheet Excel files, not multi-sheet, si
 Please ensure that only `.xlsx` or `.xls` files are used, using any other file type will result in an error.
 
 ## Technologies Used
-- [Pandas](https://pypi.org/project/pandas/)
 - [Streamlit](https://pypi.org/project/streamlit/)
+- [Pandas](https://pypi.org/project/pandas/)
 - [Pillow](https://pypi.org/project/Pillow/)
