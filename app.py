@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+import uuid
 import io
 import os
 
@@ -67,4 +68,6 @@ if file_upload is not None:
                     label=f'Download \'{file_name_no_ext}\' as CSV',
                     data=csv,
                     file_name=os.path.splitext(file_name)[0] + '.csv',
-                    mime='text/csv')
+                    mime='text/csv',
+                    # Ensure each download button has a unique key to prevent 'DuplicateWidgetID' error
+                    key=str(uuid.uuid4()))
