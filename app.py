@@ -78,7 +78,7 @@ if file_upload is not None:
                     data=csv,
                     file_name=file_name_no_ext + '.csv',
                     mime='text/csv',
-                    key=str(uuid.uuid4()))
+                    key=str(uuid.uuid4())) # Generate random key to avoid 'DuplicateWidgetID' error
 
     # When more than one file is uploaded, add an option to download them all as zip
     if len(file_list) > 1:
