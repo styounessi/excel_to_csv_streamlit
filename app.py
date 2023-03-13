@@ -72,7 +72,7 @@ if file_upload is not None:
                          ''')
             else:
                 file_list.append((csv, file_name_no_ext + '.csv'))
-                # if there's only one file, show the regular download button
+                # If there's only one file, show the regular download button
                 st.download_button(
                     label=f'Download \'{file_name_no_ext}\' as CSV',
                     data=csv,
