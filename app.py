@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+import zipfile
 import uuid
 import io
 import os
@@ -47,6 +48,7 @@ file_upload = st.file_uploader('Upload File(s)', type=['xlsx', 'xls'], accept_mu
                                label_visibility='hidden')
 
 if file_upload is not None:
+    file_list = []  # create a list to store file data and name
     for file in file_upload:
         # Check if the uploaded file is an accepted excel file
         if file.type not in ['application/vnd.ms-excel',
@@ -55,25 +57,38 @@ if file_upload is not None:
                 f'This file type is invalid: {file.name} must be an .xlsx or .xls file to proceed.')
         else:
             # Split the file name from the file extension to make the download button distinctive
-            file_name = file.name
-            file_name_no_ext = os.path.splitext(file_name)[0]
+            file_name_no_ext = os.path.splitext(file.name)[0]
             df_excel = pd.read_excel(file)
             csv = df_excel.to_csv(index=False)
             df_csv = pd.read_csv(io.StringIO(csv))
 
-            # Checks the shape of the original file and csv file to ensure it has the same
+            # Check the shape of the original file and csv file to ensure it has the same
             # number of rows and columns
             if df_excel.shape != df_csv.shape:
                 st.error(f'''
-                         The CSV file generated from {file_name} is not identical to the original file. 
+                         The CSV file generated from {file.name} is not identical to the original file. 
                          Inspect the Excel file for merged/formatted cells, formulas, special characters, etc
                          and try again.
                          ''')
             else:
+                file_list.append((csv, file_name_no_ext + '.csv'))
+                # if there's only one file, show the regular download button
                 st.download_button(
                     label=f'Download \'{file_name_no_ext}\' as CSV',
                     data=csv,
-                    file_name=os.path.splitext(file_name)[0] + '.csv',
+                    file_name=file_name_no_ext + '.csv',
                     mime='text/csv',
-                    # Ensure each download button has a unique key to prevent 'DuplicateWidgetID' error
                     key=str(uuid.uuid4()))
+
+    # When more than one file is uploaded, add an option to download them all as zip
+    if len(file_list) > 1:
+        zipped_csvs = io.BytesIO()
+        with zipfile.ZipFile(zipped_csvs, mode='w') as zip_file:
+            for file_data, file_name in file_list:
+                zip_file.writestr(file_name, file_data)
+        st.download_button(
+            label='Download All Files as Zip',
+            data=zipped_csvs.getvalue(),
+            file_name='Combined_CSVs.zip',
+            mime='application/zip',
+            key=str(uuid.uuid4()))
