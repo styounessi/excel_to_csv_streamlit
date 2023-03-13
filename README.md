@@ -3,9 +3,7 @@
 
 This converter takes Excel files and converts them directly to CSV files without changing the columns or rows in any way. There is a limit to the size and quantity of files that can be processed so use cases will vary but simple operations and files will benefit from the elimination of manual conversion.
 
-Please ensure that input files are single sheet Excel files, not multi-sheet, since CSVs do not have multiple sheets.
-
-Please ensure that only `.xlsx` or `.xls` files are used, using any other file type will result in an error.
+Users can download the converted files as individual CSV files or as a zip file containing all files when multiple files are uploaded.
 
 ## Technologies Used
 - [Streamlit](https://pypi.org/project/streamlit/)
