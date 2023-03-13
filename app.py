@@ -57,10 +57,10 @@ if file_upload is not None:
                 f'This file type is invalid: {file.name} must be an .xlsx or .xls file to proceed.')
         else:
             # Split the file name from the file extension to make the download button distinctive
-            file_name_no_ext = os.path.splitext(file.name)[0]
             df_excel = pd.read_excel(file)
             csv = df_excel.to_csv(index=False)
             df_csv = pd.read_csv(io.StringIO(csv))
+            file_name_no_ext = os.path.splitext(file.name)[0]
 
             # Check the shape of the original file and csv file to ensure it has the same
             # number of rows and columns
