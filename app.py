@@ -13,7 +13,6 @@ from PIL import Image
 st.markdown('''
             <style> .font {
             font-size: 45px;
-            font: "monospace";
             color: #008000;
             text-align: left;}
             </style>
