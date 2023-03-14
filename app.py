@@ -48,7 +48,7 @@ file_upload = st.file_uploader('Upload File(s)', type=['xlsx', 'xls'], accept_mu
                                label_visibility='hidden')
 
 if file_upload is not None:
-    file_list = []  # create a list to store file data and name
+    file_list = []  # Create a list to store file data and name
     for file in file_upload:
         # Check if the uploaded file is an accepted excel file
         if file.type not in ['application/vnd.ms-excel',
@@ -56,10 +56,10 @@ if file_upload is not None:
             st.error(
                 f'This file type is invalid: {file.name} must be an .xlsx or .xls file to proceed.')
         else:
-            # Split the file name from the file extension to make the download button distinctive
             df_excel = pd.read_excel(file)
             csv = df_excel.to_csv(index=False)
             df_csv = pd.read_csv(io.StringIO(csv))
+            # Split the file name from the file extension to make the download button distinctive
             file_name_no_ext = os.path.splitext(file.name)[0]
 
             # Check the shape of the original file and csv file to ensure it has the same
